@@ -19,3 +19,4 @@ To generate a wallet
 ```shell
 node .
 ```
+![img](img.png)

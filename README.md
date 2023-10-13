@@ -1,6 +1,7 @@
 # Ethereum Wallet Generator
 
 This project demonstrates a simple ethereum wallet generator mainly for quick wallet creation during testing.
+In the future, this may act as an ethereum cli wallet with readline option.
 
 The wallet generator creates a public key, a mnemonic and a private key.
 

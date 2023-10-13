@@ -3,28 +3,46 @@
 import chalk from "chalk";
 import chalkAnimation from "chalk-animation";
 import { ethers } from "ethers";
+import readline from "readline";
 
 const sleep = (ms = 1400) => new Promise((r) => setTimeout(r, ms));
 
 async function welcome() {
   const title = chalkAnimation.glitch(
-    'Generating ethereum wallet \n'
+    'Generating Ethereum wallet \n'
   );
 
   await sleep();
   title.stop();
-
 }
 
 async function generateWallet() {
-    const wallet = ethers.Wallet.createRandom()
+  await welcome(); // Call the welcome function here
 
-    console.log('address:', wallet.address)
-    console.log('mnemonic:', wallet.mnemonic.phrase)
-    console.log('privateKey:', wallet.privateKey)
-    console.log('')
-    console.log(chalk.bold.yellow("Remember not to share your private key"))
+  const wallet = ethers.Wallet.createRandom();
+
+  console.log('Address:', wallet.address);
+  console.log('Mnemonic:', wallet.mnemonic.phrase);
+  console.log('Private Key:', wallet.privateKey);
+  console.log('');
+  console.log(chalk.bold.yellow("Remember not to share your private key"));
 }
 
-await welcome()
-await generateWallet()
+async function main() {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  rl.question('Choose an option (1. Create Wallet): ', async (option) => {
+    if (option === '1') {
+      await generateWallet();
+    } else {
+      console.log('Invalid option');
+    }
+
+    rl.close();
+  });
+}
+
+main();

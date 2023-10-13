@@ -34,7 +34,7 @@ async function main() {
     output: process.stdout
   });
 
-  rl.question('Choose an option (1. Create Wallet): ', async (option) => {
+  rl.question('Choose an option (1. Create Ethereum Wallet): ', async (option) => {
     if (option === '1') {
       await generateWallet();
     } else {
